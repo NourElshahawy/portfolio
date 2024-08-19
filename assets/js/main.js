@@ -3,11 +3,12 @@ let menu = document.querySelector("header nav ul");
 let scrollTopBtn = document.getElementById("scroll-top");
 let faqItems = document.querySelectorAll(".faq-question");
 
+// القائمة الجانبية (Menu)
 bar.addEventListener("click", function () {
   menu.classList.toggle("menu");
 });
 
-/* Scroll to Top Button */
+// زر Scroll to Top
 window.onscroll = function () {
   if (window.scrollY > 100) {
     scrollTopBtn.classList.add("show");
@@ -17,7 +18,7 @@ window.onscroll = function () {
     scrollTopBtn.classList.remove("show");
   }
 };
-// مش بيطلع بشكل ناعم برده
+
 scrollTopBtn.addEventListener("click", function () {
   window.scrollTo({
     top: 0,
@@ -25,8 +26,7 @@ scrollTopBtn.addEventListener("click", function () {
   });
 });
 
-/* Scroll to Top Button */
-
+/* Form Submission */
 document.getElementById("contactForm").addEventListener("submit", function (event) {
   event.preventDefault();
 
@@ -34,8 +34,6 @@ document.getElementById("contactForm").addEventListener("submit", function (even
   const name = document.getElementById("name").value;
   const email = document.getElementById("email").value;
   const message = document.getElementById("message").value;
-
-  // Validation or any logic can go here
 
   // Showing a success message after form submission
   const formMessage = document.querySelector(".form-message");
@@ -49,8 +47,8 @@ document.getElementById("contactForm").addEventListener("submit", function (even
     formMessage.style.opacity = "0";
   }, 3000);
 });
-  
-// testmonail
+
+/* Testimonials */
 const testimonials = [
   {
     text: '"WebDev Team turned our website into a modern, responsive platform. Their attention to detail and commitment are top-notch!"',
@@ -66,30 +64,30 @@ const testimonials = [
   },
 ];
 
-
-let currentIndex = 0;
+let currentIndex = localStorage.getItem("testimonialIndex") || 0;
 
 document.getElementById("nextTestimonial").addEventListener("click", function () {
   currentIndex = (currentIndex + 1) % testimonials.length;
   document.querySelector(".testimonial-text").textContent = testimonials[currentIndex].text;
   document.querySelector(".client-name").textContent = testimonials[currentIndex].name;
+  localStorage.setItem("testimonialIndex", currentIndex); // حفظ الفهرس
 });
 
-// testmonail
+// عرض التستيمونيال المحفوظ عند تحميل الصفحة
+document.querySelector(".testimonial-text").textContent = testimonials[currentIndex].text;
+document.querySelector(".client-name").textContent = testimonials[currentIndex].name;
 
-
-// Frequently Asked Questions
-faqItems.forEach((item) => {
+/* FAQ State */
+faqItems.forEach((item, index) => {
   item.addEventListener("click", () => {
     const answer = item.nextElementSibling;
-    
     const allAnswers = document.querySelectorAll(".faq-answer");
+
     allAnswers.forEach((ans) => {
       ans.style.display = "none";
       ans.previousElementSibling.classList.remove("active");
     });
 
-    // إظهار أو إخفاء الإجابة
     if (answer.style.display === "block") {
       answer.style.display = "none";
       item.classList.remove("active");
@@ -97,18 +95,39 @@ faqItems.forEach((item) => {
       answer.style.display = "block";
       item.classList.add("active");
     }
+
+    // حفظ حالة السؤال في localStorage
+    const faqState = {};
+    faqItems.forEach((faqItem, i) => {
+      faqState[i] = faqItem.classList.contains("active");
+    });
+    localStorage.setItem("faqState", JSON.stringify(faqState));
   });
 });
-// Frequently Asked Questions
 
-// كود لإظهار وإخفاء بانل السيتنج
-document.getElementById('settings-btn').addEventListener('click', function() {
-    const panel = document.getElementById('settings-panel');
-    panel.classList.toggle('active');
+// استرجاع حالة الأسئلة من localStorage
+const savedFaqState = JSON.parse(localStorage.getItem("faqState")) || {};
+faqItems.forEach((item, index) => {
+  if (savedFaqState[index]) {
+    item.classList.add("active");
+    item.nextElementSibling.style.display = "block";
+  }
 });
 
-// كود لتغيير لون الموقع
+/* Settings Panel */
+document.getElementById("settings-btn").addEventListener("click", function () {
+  const panel = document.getElementById("settings-panel");
+  panel.classList.toggle("active");
+});
+
+// تغيير لون الموقع
 function changeColor(color) {
-    document.body.style.backgroundColor = color;
+  document.body.style.backgroundColor = color;
+  localStorage.setItem("siteColor", color); // حفظ اللون
 }
 
+// استرجاع لون الموقع عند التحميل
+const savedColor = localStorage.getItem("siteColor");
+if (savedColor) {
+  document.body.style.backgroundColor = savedColor;
+}
