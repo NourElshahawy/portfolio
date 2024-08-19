@@ -25,7 +25,6 @@ body {
     z-index: 100;
 }
 .logo img{
-    width: max-content;
     height: 80px;
     border-radius: 10px;
 }
@@ -81,10 +80,10 @@ nav ul li a:hover, nav ul li a:focus {
 
 .menu {
   width: 200px;
-  height: 230px !important; /* تعديل الطول إلى 300 بكسل */
+  height: 230px !important; 
   position: absolute;
-  top: 40px;
-  left: 300px;
+  top: 100%;
+  left: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -94,7 +93,9 @@ nav ul li a:hover, nav ul li a:focus {
   border: 2px solid #00abf0;  
   transition: all 0.3s ease-in-out;
   animation: slideDown 0.5s ease forwards;
+  overflow: hidden;
 }
+
 .menu-bar {
   display: none;
   cursor: pointer;
