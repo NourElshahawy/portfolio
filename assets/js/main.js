@@ -30,12 +30,10 @@ scrollTopBtn.addEventListener("click", function () {
 document.getElementById("contactForm").addEventListener("submit", function (event) {
   event.preventDefault();
 
-  // Fetching form inputs
   const name = document.getElementById("name").value;
   const email = document.getElementById("email").value;
   const message = document.getElementById("message").value;
 
-  // Showing a success message after form submission
   const formMessage = document.querySelector(".form-message");
   formMessage.textContent = "Thank you, " + name + "! Your message has been sent successfully.";
   formMessage.style.visibility = "visible";
@@ -73,11 +71,9 @@ document.getElementById("nextTestimonial").addEventListener("click", function ()
   localStorage.setItem("testimonialIndex", currentIndex); // حفظ الفهرس
 });
 
-// عرض التستيمونيال المحفوظ عند تحميل الصفحة
 document.querySelector(".testimonial-text").textContent = testimonials[currentIndex].text;
 document.querySelector(".client-name").textContent = testimonials[currentIndex].name;
 
-/* FAQ State */
 faqItems.forEach((item, index) => {
   item.addEventListener("click", () => {
     const answer = item.nextElementSibling;
@@ -96,7 +92,6 @@ faqItems.forEach((item, index) => {
       item.classList.add("active");
     }
 
-    // حفظ حالة السؤال في localStorage
     const faqState = {};
     faqItems.forEach((faqItem, i) => {
       faqState[i] = faqItem.classList.contains("active");
@@ -105,7 +100,6 @@ faqItems.forEach((item, index) => {
   });
 });
 
-// استرجاع حالة الأسئلة من localStorage
 const savedFaqState = JSON.parse(localStorage.getItem("faqState")) || {};
 faqItems.forEach((item, index) => {
   if (savedFaqState[index]) {
@@ -114,19 +108,16 @@ faqItems.forEach((item, index) => {
   }
 });
 
-/* Settings Panel */
 document.getElementById("settings-btn").addEventListener("click", function () {
   const panel = document.getElementById("settings-panel");
   panel.classList.toggle("active");
 });
 
-// تغيير لون الموقع
 function changeColor(color) {
   document.body.style.backgroundColor = color;
-  localStorage.setItem("siteColor", color); // حفظ اللون
+  localStorage.setItem("siteColor", color); 
 }
 
-// استرجاع لون الموقع عند التحميل
 const savedColor = localStorage.getItem("siteColor");
 if (savedColor) {
   document.body.style.backgroundColor = savedColor;
