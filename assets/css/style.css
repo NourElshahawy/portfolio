@@ -14,19 +14,19 @@ body {
 }
 
 .header {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 20px 50px;
+    width: 95%;
+    margin: 0px auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 100;
+    padding: 20px;
 }
 .logo img{
+    width: 80px;
     height: 80px;
-    border-radius: 10px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 nav {
@@ -46,7 +46,6 @@ nav {
   position: relative;
 }
 nav ul {
-  width: 80%;
   display: flex;
   justify-content: center; 
   align-items: center;
@@ -82,16 +81,17 @@ nav ul li a:hover, nav ul li a:focus {
   width: 200px;
   height: 230px !important; 
   position: absolute;
-  top: 100%;
-  left: 50%;
+  top: 150%;
+  right: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   gap: 20px;
-  background: #081b299d;
+  background: #081b29d5;
   border: 2px solid #00abf0;  
   transition: all 0.3s ease-in-out;
+  z-index: 2;
   animation: slideDown 0.5s ease forwards;
   overflow: hidden;
 }
@@ -158,57 +158,47 @@ nav ul li a:hover, nav ul li a:focus {
 /* start section home */
 .home {
     min-height: 100vh;
+    width: 95%;
+    margin: 0 auto;
+    overflow: hidden;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    padding: 150px 50px;
 } 
 .home .home-imgHover{
-    width: 400px;
-    height: 400px;
+    width: clamp(250px, 30vw, 400px);
+    height: clamp(250px, 30vw, 400px);;
     border-radius: 40%;
     margin: 50px auto 0;
     background: linear-gradient(to left, #00acf08f, #ffffff59);  
 }
 .home .home-imgHover img {
-    width: 400px;
-    height: 400px;
+    width: clamp(250px, 30vw, 400px);
+    height: clamp(250px, 30vw, 400px);;
     object-fit: contain;
     border-radius: 50%;
 }
 
-/* @media (max-width: 700px) {
-    .home .home-imgHover{
-    width: 200px;
-    height: 200px;
-    border-radius: 40%;
-    position: absolute;
-    top: 100px;
-    left: 450px;
-    background: linear-gradient(to left, #00acf08f, #ffffff59);  
-}
-.home .home-imgHover img {
-    width: 200px;
-    height: 200px;
-    object-fit: contain;
-    border-radius: 50%;
-}
 
-}  */
 .home-content {
-    max-width: 600px;
+    width: 600px;
+    display: flex;
     z-index: 20;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
 }
 
 .home-content h1 {
-    font-size: 56px;
+    font-size: clamp(24px,5vw,56px);
     font-weight: 700;
     line-height: 1.2;
 }
 .home-content h3 {
     background: #000;
-    font-size: 32px;
+    font-size: clamp(22px,5vw,32px);
     font-weight: 700;
     color: #00abf0;
     position: relative;
@@ -219,7 +209,6 @@ nav ul li a:hover, nav ul li a:focus {
     background: linear-gradient(to left, #00acf08f, #ffffff59);  
     padding: 10px; 
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    /* المسؤله عن ان الكلام مينزلش سطور تانيه وخلي بالك منها لاني اتشليت علي ما عرفتها */
     white-space: nowrap; 
     animation: typing 5s steps(30, end), blink-caret 0.75s step-end infinite;
 }
@@ -236,6 +225,7 @@ nav ul li a:hover, nav ul li a:focus {
 
 
 .home-content p {
+    text-align: center;
     font-size: 16px;
     padding: 20px 0 ;
     line-height: 1.5;
@@ -243,9 +233,13 @@ nav ul li a:hover, nav ul li a:focus {
 }
 
 .home-content .btn-box {
+    width: 90%;
     display: flex;
-    justify-content: space-between;
-    width: 345px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 100%;
     height: 50px;
 }
 
@@ -254,12 +248,13 @@ nav ul li a:hover, nav ul li a:focus {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    width: 150px;
+    width: clamp(110px,15vw,150px);
     height: 100%;
+    padding: 8px;
     background-color: #00abf0;
     border: 2px solid #00abf0;
     border-radius: 8px;
-    font-size: 19px;
+    font-size: clamp(12px,15vw,18px);
     color: #081b29;
     text-decoration: none;
     font-weight: 600;
@@ -303,7 +298,6 @@ nav ul li a:hover, nav ul li a:focus {
 }
 
 .home-sci {
-    width: 170px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -512,7 +506,7 @@ nav ul li a:hover, nav ul li a:focus {
     background: linear-gradient(145deg, #0d2a3e, #081b29);
     border-radius: 8px;
     padding: 20px;
-    width: 300px;
+    width: clamp(280px, 30vw, 300px);
     cursor: pointer;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -570,9 +564,9 @@ nav ul li a:hover, nav ul li a:focus {
 
 .service-box {
     background: linear-gradient(145deg, #0d2a3e, #081b29);
-    padding: 30px;
+    padding: 20px;
     border-radius: 15px;
-    width: 300px;
+    width: clamp(280px, 30vw, 300px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     transition: background-color 0.3s ease;
 }
@@ -689,7 +683,9 @@ nav ul li a:hover, nav ul li a:focus {
 /* products end */
 /* testmonali */
 .testimonials-section {
-    padding: 50px;
+    padding: 50px 0;
+    width: 90%;
+    margin: 0 auto;
     color: #fff;
     text-align: center;
 }
@@ -735,7 +731,9 @@ nav ul li a:hover, nav ul li a:focus {
 /* testmonali */
 /* start section faq-section */
 .faq-section {
-    padding: 50px 20px;
+    width: 90%;
+    margin: 0 auto;
+    padding: 50px 0px;
     color: #fff;
     text-align: center;
 }
@@ -790,7 +788,7 @@ nav ul li a:hover, nav ul li a:focus {
 
 /* Contact Section */
 .contact {
-    padding: 100px 0;
+    padding: 50px 0;
     color: #ededed;
     text-align: center;
     display: flex;
@@ -806,20 +804,26 @@ nav ul li a:hover, nav ul li a:focus {
     gap: 20px;
 }
 .section-title {
-    font-size: 48px;
-    margin-bottom: 40px;
+    font-size: clamp(28px,5vw,38px);
     color: #00abf0;
     font-weight: bold;
 }
+.description {
+    font-size: clamp(18px,5vw,22px);
+    color: #777;
+    width: 90%;
+    font-weight: 500;
+}
 
 .contact-content {
+    width: 90%;
     display: flex;
     justify-content: center;
 }
 
 .contact-form {
     width: 100%;
-    padding: 30px;
+    padding: 30px 10px;
     background: rgba(0, 171, 240, 0.1);
     border-radius: 10px;
     box-shadow: 0px 10px 30px rgba(0, 171, 240, 0.2);
@@ -832,12 +836,12 @@ nav ul li a:hover, nav ul li a:focus {
 .input-box input,
 .input-box textarea {
     width: 100%;
-    padding: 15px 20px;
+    padding: 10px 15px;
     background-color: transparent;
     border: 2px solid #00abf0;
     color: #ededed;
     border-radius: 8px;
-    font-size: 16px;
+    font-size: clamp(14px,5vw,18px);
     outline: none;
     transition: 0.3s;
 }
@@ -875,16 +879,17 @@ nav ul li a:hover, nav ul li a:focus {
 
 /* Submit Button */
 .submit-btn button {
+    display: flex;
+    margin: 0 auto;
     background-color: #00abf0;
     border: none;
     color: #081b29;
-    padding: 15px 30px;
-    font-size: 18px;
+    padding: 10px 20px;
+    font-size: clamp(14px,5vw,18px);
     font-weight: bold;
     border-radius: 8px;
     cursor: pointer;
     transition: 0.3s;
-    width: 100%;
 }
 
 .submit-btn button:hover {
@@ -906,9 +911,10 @@ nav ul li a:hover, nav ul li a:focus {
 
 /* start style footer */
 footer {
-    background-color: #111;
+    background: linear-gradient(135deg, #050d12, #0f2336, #16425b);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
     color: #fff;
-    padding: 40px 0;
+    padding: 40px 0 0 0;
 }
 
 .footer-container {
@@ -963,7 +969,6 @@ footer {
 .footer-bottom {
     text-align: center;
     padding: 20px;
-    background-color: #000;
     color: #777;
     font-size: 14px;
 }
@@ -982,9 +987,9 @@ footer {
     transform: translateY(-50%);
     background-color: #00a3c4;
     color: #fff;
-    padding: 10px 15px;
+    padding: clamp(8px,2vw,15px);
     border-radius: 0 5px 5px 0;
-    font-size: 20px;
+    font-size: clamp(10px, 2vw, 20px);
     cursor: pointer;
     z-index: 1000; 
     transition: background-color 0.3s ease;
